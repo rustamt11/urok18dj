@@ -1,0 +1,11 @@
+{% extends 'adminpanel/base.html' %}
+
+{% block content %}
+    <h1>{% if product %}Редактировать Товар{% else %}Добавить Товар{% endif %}</h1>
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Сохранить</button>
+    </form>
+{% endblock %}

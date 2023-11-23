@@ -1,0 +1,17 @@
+{% extends 'adminpanel/base.html' %}
+
+{% block content %}
+    <h1>Управление Товарами</h1>
+    <a href="{% url 'add_product' %}">Добавить Товар</a>
+    <ul>
+        {% for product in products %}
+            <li>
+                {{ product.name }} - {{ product.price }} $.
+                <a href="{% url 'edit_product' product.id %}">Редактировать товар</a>
+                 <a href="{% url 'delete_product' product.id %}">Удалить товар</a>
+            </li>
+        {% empty %}
+            <p>Товары не найдены.</p>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends 'customer/base.html' %}
+
+{% block content %}
+    <h1>Товары</h1>
+    <ul>
+        {% for product in products %}
+            <li>
+                {{ product.name }} - {{ product.price }} руб.
+                <a href="{% url 'product_detail' product.id %}">Перейти к товару</a>
+                <a href="{% url 'buy_product' product.id %}" onclick="return confirm('Вы уверены, что хотите купить этот товар?');">Купить товар</a>
+            </li>
+        {% empty %}
+            <p>Товары не найдены.</p>
+        {% endfor %}
+    </ul>
+{% endblock %}
